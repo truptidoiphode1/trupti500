@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="report_mrporder_extended_for_image" inherit_id="mrp.report_mrporder">
+        <xpath expr="//div[hasclass('page')]/div[3]" position="inside">
+            <div class="col-3">
+                <strong>Product Image:</strong><br/>
+                <div t-field="o.product_tmpl_id.image_128" t-options="{'widget': 'image', 'qweb_img_responsive': False, 'class': 'rounded-circle d-block mx-auto o_image_64_cover' , 'img_style': 'width:50%;height:10%'}"/>
+            </div>
+        </xpath>
+    </template>
+    <template id="report_mrp_production_components_extended_for_image" inherit_id="mrp.report_mrp_production_components">
+        <xpath expr="//table/thead/tr/th[1]" position="before">
+            <t><th>Image</th></t>
+        </xpath>
+        <xpath expr="//table/tbody/tr/td[1]" position="before">
+            <td>
+                <div t-field="raw_line.product_mo_image" t-options="{'widget': 'image', 'qweb_img_responsive': False, 'style': 'width:60%;height:30%'}" />
+            </td>
+        </xpath>
+    </template>  
+</odoo>
